@@ -7,5 +7,7 @@
   <li> <%= link_to i.name, ingredient_path(i) %> </li>
       <% end %>
     </ul>
+<% if @recipe.user %>
+	<h3> Made by <%= link_to @recipe.user_name, user_path(@recipe.user) %> </h3>
+<% end %>
 
-<h3> Made by <%= link_to @recipe.user_name, user_path(@recipe.user) %> </h3>

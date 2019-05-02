@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.search(params[:search])
   end
 
   def show
@@ -14,7 +14,11 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(strong_params)
-    redirect_to @recipe
+    if @recipe.errors.empty?
+      redirect_to @recipe
+    else 
+      render :new 
+    end
   end
 
   private

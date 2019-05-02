@@ -7,4 +7,14 @@
   <li> <%= link_to r.name, recipe_path(r) %> </li>
       <% end %>
     </ul>
+
+ <h2>I am allergic to:</h2>
+ <ul>
+ 	<% @user.ingredients.each do |i| %>
+ 		<li><%= link_to i.name, ingredient_path(i) %></li>
+ 	<% end %>
+ </ul>
     
+<%= form_tag user_path(@user), method:"delete" do %>
+	<%= submit_tag "Delete this user" %>
+<% end %>

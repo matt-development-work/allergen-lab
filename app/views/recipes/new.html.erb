@@ -1,0 +1,11 @@
+<%= form_for @recipe do |r| %>
+
+  <%=r.label "Recipe Name" %>
+  <%=r.text_field :name %>
+
+  <%= r.label "User" %>
+  <%= r.collection_select(:user_id, User.all, :id, :name, {:prompt => 'Select User'}) %>
+
+  <%= r.submit "Create Recipe" %>
+
+<% end %>

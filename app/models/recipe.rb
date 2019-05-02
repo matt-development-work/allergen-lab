@@ -23,10 +23,10 @@ class Recipe < ApplicationRecord
   				self.where(name: search)
   			end 
   		else
-  			Recipe.all.joins(:recipe_ingredients).group("name").order('COUNT(recipe_ingredients.id) DESC')
+  			Recipe.all.sort_by do |recipe| recipe.ingredients.count end.reverse
   		end 
   	else
-  		Recipe.all.left_joins(:recipe_ingredients).group("name").order('COUNT(recipe_ingredients.id) DESC')
+  		Recipe.all.sort_by do |recipe| recipe.ingredients.count end.reverse
     end 
   end
 end

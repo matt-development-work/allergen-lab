@@ -10,6 +10,6 @@
 
 <ul>
     <% @recipes.each do |r| %>
-        <li><%= link_to r.name, recipe_path(r) %></li>
+        <li>Name: <%= link_to r.name, recipe_path(r) %></li><br># of Recipes: <%= r.ingredients_count %>
     <% end %>
 </ul>
